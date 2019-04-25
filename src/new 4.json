@@ -1,0 +1,310 @@
+{
+swagger: "2.0",
+basePath: "/",
+paths: {
+/resourceTypes: {
+post: {
+responses: {
+201: {
+description: "OK",
+schema: {
+$ref: "#/definitions/resource Types"
+}
+},
+400: {
+description: "ERROR"
+},
+500: {
+description: "SERVER_ERROR"
+}
+},
+operationId: "post_my_resource_post",
+parameters: [
+{
+name: "payload",
+required: true,
+in: "body",
+schema: {
+$ref: "#/definitions/Resource"
+}
+}
+],
+tags: [
+"default"
+]
+}
+},
+/resourceTypes/allActiveResources: {
+get: {
+responses: {
+200: {
+description: "OK",
+schema: {
+$ref: "#/definitions/resource Types"
+}
+},
+400: {
+description: "ERROR"
+},
+500: {
+description: "SERVER_ERROR"
+}
+},
+operationId: "get_my_resource_get_all_active",
+tags: [
+"default"
+]
+}
+},
+/resourceTypes/allResources: {
+get: {
+responses: {
+200: {
+description: "OK",
+schema: {
+$ref: "#/definitions/resource Types"
+}
+},
+400: {
+description: "ERROR"
+},
+500: {
+description: "SERVER_ERROR"
+}
+},
+operationId: "get_my_resource_get_all",
+tags: [
+"default"
+]
+}
+},
+/resourceTypes/{resourceTypeId}: {
+parameters: [
+{
+name: "resourceTypeId",
+in: "path",
+required: true,
+type: "integer"
+}
+],
+put: {
+responses: {
+200: {
+description: "Success"
+}
+},
+operationId: "update the resource",
+parameters: [
+{
+name: "payload",
+required: true,
+in: "body",
+schema: {
+$ref: "#/definitions/resource Types"
+}
+}
+],
+tags: [
+"default"
+]
+}
+},
+/resourceTypes/{resourceTypeId}/{loggedInUser}: {
+parameters: [
+{
+name: "resourceTypeId",
+in: "path",
+required: true,
+type: "integer"
+},
+{
+name: "loggedInUser",
+in: "path",
+required: true,
+type: "string"
+}
+],
+delete: {
+responses: {
+200: {
+description: "Success"
+}
+},
+operationId: "soft delete resources",
+tags: [
+"default"
+]
+}
+},
+/resourceTypes1/{resourceTypeId}: {
+get: {
+responses: {
+200: {
+description: "OK",
+schema: {
+$ref: "#/definitions/resource Types"
+}
+},
+400: {
+description: "ERROR"
+},
+500: {
+description: "SERVER_ERROR"
+}
+},
+operationId: "get_my_resource",
+parameters: [
+{
+name: "resourceTypeId",
+in: "path",
+required: true,
+type: "string",
+description: "An ID"
+}
+],
+tags: [
+"default"
+]
+}
+}
+},
+info: {
+title: "Resource Type API with Python",
+version: "0.0.1",
+description: "API for ICP OpsAuto services"
+},
+produces: [
+"application/json"
+],
+consumes: [
+"application/json"
+],
+tags: [
+{
+name: "default",
+description: "Default namespace"
+}
+],
+definitions: {
+resource Types: {
+allOf: [
+{
+$ref: "#/definitions/response"
+},
+{
+properties: {
+items: {
+type: "array",
+items: {
+$ref: "#/definitions/ResourceSchema"
+}
+}
+},
+type: "object"
+}
+]
+},
+response: {
+properties: {
+applicationCode: {
+type: "integer"
+},
+code: {
+type: "integer"
+},
+message: {
+type: "string"
+},
+status: {
+type: "string"
+}
+},
+type: "object"
+},
+ResourceSchema: {
+required: [
+"loggedInUser",
+"resourceTypeIsActive"
+],
+properties: {
+loggedInUser: {
+type: "string",
+description: "The loggedInUser"
+},
+resourceTypeName: {
+type: "string",
+description: "The resourceTypeName"
+},
+resourceCategoryLevel1: {
+type: "string",
+description: "The resourceCategoryLevel1"
+},
+resourceCategoryLevel2: {
+type: "string",
+description: "resourceCategoryLevel1"
+},
+resourceTypeDesc: {
+type: "string",
+description: "resourceTypeDesc"
+},
+resourceTypeId: {
+type: "integer"
+},
+resourceTypeRemarks: {
+type: "string",
+description: "resourceTypeRemarks"
+},
+resourceTypeIsActive: {
+type: "boolean",
+description: "resourceTypeIsActive"
+}
+},
+type: "object"
+},
+Resource: {
+required: [
+"loggedInUser",
+"resourceTypeIsActive"
+],
+properties: {
+loggedInUser: {
+type: "string",
+description: "The loggedInUser"
+},
+resourceTypeName: {
+type: "string",
+description: "The resourceTypeName"
+},
+resourceCategoryLevel1: {
+type: "string",
+description: "The resourceCategoryLevel1"
+},
+resourceCategoryLevel2: {
+type: "string",
+description: "resourceCategoryLevel1"
+},
+resourceTypeDesc: {
+type: "string",
+description: "resourceTypeDesc"
+},
+resourceTypeRemarks: {
+type: "string",
+description: "resourceTypeRemarks"
+},
+resourceTypeIsActive: {
+type: "boolean",
+description: "resourceTypeIsActive"
+}
+},
+type: "object"
+}
+},
+responses: {
+ParseError: {
+description: "When a mask can't be parsed"
+},
+MaskError: {
+description: "When any error occurs on mask"
+}
+}
+}

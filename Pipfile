@@ -1,0 +1,36 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+flask-sqlalchemy = "*"
+flask-migrate = "*"
+flask-script = "*"
+marshmallow = "*"
+flask-bcrypt = "*"
+pyjwt = "*"
+pytest = "*"
+coverage = "*"
+pytest-cov = "*"
+python-coveralls = "*"
+gunicorn = "*"
+python-dotenv = "*"
+pymysql = "*"
+flasgger = "*"
+pylint = "*"
+"boto3" = "*"
+requests-staticmock = "*"
+"unittest2" = "*"
+nose = "*"
+flask-httpauth = "*"
+jenkins-python = "*"
+python-jenkins = "*"
+deploy = "*"
+flask-restplus = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"
